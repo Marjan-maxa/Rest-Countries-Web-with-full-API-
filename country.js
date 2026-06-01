@@ -12,6 +12,20 @@ const flagImg = document.querySelector(".country-detais img");
 const countryTitleh1 = document.querySelector(
   ".country-detais .text-details h1",
 );
+const themeSwitcher = document.querySelector(".theme-swicher");
+const currentMode = localStorage.getItem("theme");
+if (currentMode === "dark") {
+  document.body.classList.add("dark");
+  if (themeSwitcher) {
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-sun"></i>&nbsp;Light Mode`;
+  }
+} else {
+  document.body.classList.remove("dark");
+  if (themeSwitcher) {
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-moon"></i>&nbsp;Dark Mode`;
+  }
+}
+
 const borderCountriesContainer = document.querySelector(".border-section");
 fetch(`https://restcountries.com/v3.1/name/${contryName}?fullText=true`)
   .then((res) => res.json())
@@ -61,3 +75,14 @@ fetch(`https://restcountries.com/v3.1/name/${contryName}?fullText=true`)
       });
     }
   });
+
+themeSwitcher.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-sun"></i>&nbsp;Light Mode`;
+  } else {
+    localStorage.setItem("theme", "light");
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-moon"></i>&nbsp;Dark Mode`;
+  }
+});

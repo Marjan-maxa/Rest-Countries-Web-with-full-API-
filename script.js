@@ -14,6 +14,16 @@ if (currentMode === "dark") {
     themeSwitcher.innerHTML = `<i class="fa-regular fa-moon"></i>&nbsp;Dark Mode`;
   }
 }
+themeSwitcher.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-sun"></i>&nbsp;Light Mode`;
+  } else {
+    localStorage.setItem("theme", "light");
+    themeSwitcher.innerHTML = `<i class="fa-regular fa-moon"></i>&nbsp;Dark Mode`;
+  }
+});
 const loader = document.createElement("div");
 loader.innerText = "Loading Countries...";
 loader.classList.add("loading");
@@ -78,14 +88,4 @@ searchInput.addEventListener("input", (e) => {
     country.name.common.toLowerCase().includes(e.target.value.toLowerCase()),
   );
   renderCountries(filterdCountries);
-});
-
-themeSwitcher.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    themeSwitcher.innerHTML = `<i class="fa-regular fa-sun"></i>&nbsp;Light Mode`;
-  } else {
-    themeSwitcher.innerHTML = `<i class="fa-regular fa-moon"></i>&nbsp;Dark Mode`;
-  }
 });

@@ -2,14 +2,24 @@
   box-sizing: border-box;
 }
 body {
+  --background-color: white;
+  --text-color: black;
+  --element-color: #fff;
   font-family: "Nunito", sans-serif;
-  background: #f4f3f5;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
+  animation: fadeBody 1s ease;
+}
+body.dark {
+  --background-color: hsl(207, 26%, 17%);
+  --text-color: #fff;
+  --element-color: hsl(209, 23%, 22%);
 }
 
 /* Header */
 .header {
-  background: #fff;
+  background-color: var(--element-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 15px 24px;
   position: sticky;
@@ -177,4 +187,11 @@ borderBtn {
 }
 .back-btn i {
   margin-right: 8px;
+}
+
+.theme-swicher {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
 }
