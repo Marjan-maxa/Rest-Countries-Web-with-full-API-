@@ -62,7 +62,7 @@ function renderCountries(data) {
       const capital = country.capital ? country.capital.join(", ") : "N/A";
 
       const countryCard = document.createElement("a");
-      countryCard.href = `/country.html?name=${country.name.common}`;
+      countryCard.href = `country.html?name=${country.name.common}`;
       countryCard.classList.add("country-card");
 
       countryCard.innerHTML = `
